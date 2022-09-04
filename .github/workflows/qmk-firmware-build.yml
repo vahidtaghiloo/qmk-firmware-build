@@ -11,7 +11,7 @@ jobs:
     - name: clone-qmk-firmware
       uses: actions/checkout@v3
       with:
-        repository: vahidtaghiloo/qmk_firmware.git
+        repository: vahidtaghiloo/qmk_firmware
 
     - name: setup-qmk
       working-directory: ./qmk_firmware
