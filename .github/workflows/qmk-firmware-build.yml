@@ -1,0 +1,30 @@
+name: qmk-firmware-build
+on: [push]
+
+jobs:
+  build
+    runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
+    
+    steps:
+
+    - name: clone-qmk-firmware
+      uses: actions/checkout@v3
+      with:
+        repository: vahidtaghiloo/qmk_firmware.git
+
+    - name: setup-qmk
+      working-directory: ./qmk_firmware
+      run: |
+        qmk setup -y
+
+    - name: build-binary-firmware
+      working-directory: ./qmk_firmware
+      run: |
+        qmk compile -kb blackpill_mechanical_keyboard -km default
+      
+    - name: upload-bin-file
+      uses: actions/upload-artifact@v3
+      with:
+        path: |
+          ./qmk_firmware/*.bin
