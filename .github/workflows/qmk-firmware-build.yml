@@ -37,5 +37,5 @@ jobs:
     - name: release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
-        with:
+      with:
           files: ./qmk_firmware/*.bin
