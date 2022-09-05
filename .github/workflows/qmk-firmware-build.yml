@@ -13,6 +13,10 @@ jobs:
       with:
         repository: vahidtaghiloo/qmk_firmware
 
+    - name: list-pwd
+      run: |
+        ls
+    
     - name: setup-qmk
       working-directory: ./qmk_firmware
       run: |
